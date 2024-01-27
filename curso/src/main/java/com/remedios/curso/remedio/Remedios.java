@@ -14,13 +14,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity(name = "remedios")
-@Table(name = "Remedio")
+@Table(name = "Remedios")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Remedios {
+    public Remedios (DadosCadastroRemedio dados) {
+        this.nome=dados.nome();
+        this.via=dados.via();
+        this.lote=dados.lote();
+        this.quantidade=dados.quantidade();
+        this.validade=dados.validade();
+        this.laboratorio=dados.laboratorio();
+    }
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
@@ -28,6 +36,7 @@ public class Remedios {
     @Enumerated(EnumType.STRING)
     private via via;
     private String lote;
+    private String quantidade;
     private  String validade;
 
     @Enumerated(EnumType.STRING)
