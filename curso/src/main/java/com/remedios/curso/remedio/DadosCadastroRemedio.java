@@ -13,7 +13,7 @@ public record DadosCadastroRemedio(
     via via,
     @NotBlank
     String lote,
-    
+
     int quantidade,
     @Future
     LocalDate validade,
@@ -22,4 +22,4 @@ public record DadosCadastroRemedio(
     ) {
 
 
-} 
+}
