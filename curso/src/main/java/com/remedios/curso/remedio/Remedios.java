@@ -1,5 +1,7 @@
 package com.remedios.curso.remedio;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -36,8 +38,8 @@ public class Remedios {
     @Enumerated(EnumType.STRING)
     private via via;
     private String lote;
-    private String quantidade;
-    private  String validade;
+    private int quantidade;
+    private  LocalDate validade;
 
     @Enumerated(EnumType.STRING)
     private  laboratorio laboratorio;
