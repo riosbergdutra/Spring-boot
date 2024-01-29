@@ -31,6 +31,7 @@ public class Remedios {
         this.quantidade=dados.quantidade();
         this.validade=dados.validade();
         this.laboratorio=dados.laboratorio();
+        this.ativo = true;
     }
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,6 +46,8 @@ public class Remedios {
     @Enumerated(EnumType.STRING)
     private  laboratorio laboratorio;
 
+    private boolean ativo;
+
     public void atuaInformacoes(@Valid DadoaAtualizarRemedio dados) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
@@ -55,5 +58,9 @@ public class Remedios {
         if (dados.laboratorio() != null) {
             this.laboratorio = dados.laboratorio();
         }
+    }
+
+    public void inativar() {
+        this.ativo = false;
     }
 }

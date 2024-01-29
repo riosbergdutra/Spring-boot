@@ -35,7 +35,7 @@ public class remedioController {
 
     @GetMapping
     public List<DadosListagemRemedio> listar(){
-        return repository.findAll().stream().map(DadosListagemRemedio::new).toList();
+        return repository.findAllByAtivoTrue().stream().map(DadosListagemRemedio::new).toList();
     }
 
     @PutMapping
@@ -49,5 +49,12 @@ public class remedioController {
     @Transactional
     public void excluir(@PathVariable Long id){
         repository.deleteById(id);
+    }
+    @DeleteMapping("inativar/{id}")
+    @Transactional
+    public void inativar(@PathVariable Long id){
+        var remedio = repository.getReferenceById(id);
+        remedio.inativar();
+
     }
 }
