@@ -63,4 +63,9 @@ public class Remedios {
     public void inativar() {
         this.ativo = false;
     }
+
+    public void reativar() {
+        this.ativo = true;
+    }
+
 }
