@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.remedios.curso.remedio.DadoaAtualizarRemedio;
 import com.remedios.curso.remedio.DadosCadastroRemedio;
@@ -32,8 +33,11 @@ public class remedioController {
     private  RemedioRepository repository;
     @PostMapping
     @Transactional
-    public ResponseEntity<T>cadastrar(@RequestBody @Valid DadosCadastroRemedio dados) {
-        repository.save(new Remedios(dados));
+    public ResponseEntity<DadosDetalhamentoRemedio> cadastrar(@RequestBody @Valid DadosCadastroRemedio dados,UriComponentsBuilder builder) {
+        var remedio = new Remedios(dados);
+        repository.save(remedio);   
+        var uri = builder.path("/remedios/{id}").buildAndExpand(remedio.getId()).toUri();
+        return ResponseEntity.created(uri).body(new DadosDetalhamentoRemedio(remedio));
     }
 
     @GetMapping
