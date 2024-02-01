@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 class securityConfiguration {
 
 @Bean
-  SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
       .csrf(custom -> custom.disable())
       .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
