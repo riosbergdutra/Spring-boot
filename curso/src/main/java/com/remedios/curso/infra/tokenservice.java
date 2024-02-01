@@ -15,7 +15,7 @@ import com.remedios.usuarios.usuario;
 
 
 @Service
-public class tokenservice {
+public class TokenService {
 
 	@Value("${api.security.token.secret}")
 	private String secret;
